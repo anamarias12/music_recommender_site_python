@@ -27,3 +27,6 @@ for track in results['tracks'][:10]:
     print('audio    : ' + track['preview_url'])
     print('cover art: ' + track['album']['images'][0]['url'])
     print()
+
+Fisierele sunt prea mari asa ca pt a face git push:
+git lfs track "similarity" "spotify_millsongdata.csv"
