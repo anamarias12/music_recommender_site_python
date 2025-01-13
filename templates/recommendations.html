@@ -3,69 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recommendations</title>
-    <style>
-        body {
-            background-color: #121212;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        h1 {
-            color: pink;
-            font-size: 3em;
-            margin-top: 20px;
-        }
-        .recommendations {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 30px auto;
-            max-width: 1200px;
-        }
-        .recommendation {
-            margin: 10px;
-            text-align: center;
-            width: 200px;
-        }
-        .recommendation img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        .recommendation p {
-            margin-top: 10px;
-            font-size: 1.1em;
-            color: white;
-        }
-        .back-button {
-            background-color: pink;
-            color: white;
-            font-size: 1em;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: 20px;
-            display: inline-block;
-        }
-        .back-button:hover {
-            background-color: #ff7bbd;
-        }
-    </style>
+    <title>Your Recommendations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='recommendations.css') }}">
 </head>
 <body>
-    <h1>Your Recommendations</h1>
-    <div class="recommendations">
-        {% for song, poster in songs %}
-        <div class="recommendation">
-            <img src="{{ poster }}" alt="{{ song }}">
-            <p>{{ song }}</p>
-        </div>
-        {% endfor %}
+    <div class="sky-container">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
     </div>
-    <a href="/search" class="back-button">Back to Search</a>
+    <div class="container">
+        <h1>Your Recommendations</h1>
+        <p class="description">Here are some songs we think you’ll love based on your selection.</p>
+        <div class="recommendations">
+            {% for song, poster in songs %}
+            <div class="recommendation">
+                <img src="{{ poster }}" alt="{{ song }}">
+                <p>{{ song }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="/search" class="back-button">Back to Search</a>
+    </div>
 </body>
 </html>

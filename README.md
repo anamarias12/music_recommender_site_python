@@ -9,24 +9,17 @@ Trebuie facut cont pe Spotify for Developers dc vrei sa ai functionalitati nice 
 
 https://spotipy.readthedocs.io/en/2.16.0/#client-credentials-flow
 
-In terminal ruleaza: streamlit run app.py
-
 Poti folosi si comanda jupyter notebook pt a schimba chestii in model_training si sa intrii pe linkul lor cu localhost
 
 Asta e un model de pe documentatia spotify:
-import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-
-lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
-
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
-results = spotify.artist_top_tracks(lz_uri)
-
-for track in results['tracks'][:10]:
-    print('track    : ' + track['name'])
-    print('audio    : ' + track['preview_url'])
-    print('cover art: ' + track['album']['images'][0]['url'])
-    print()
 
 Fisierele sunt prea mari asa ca pt a face git push:
 git lfs track "similarity" "spotify_millsongdata.csv"
+
+RULARE: python3 app.py
+
+TO DO:
+- searchbar improvement
+- filtering functionalities
+- rating functionalities
