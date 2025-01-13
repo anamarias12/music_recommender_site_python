@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Songs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+</head>
+<body>
+    <div class="sky-container">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
+    <div class="container">
+        <h1>Find Your Favorite Song!</h1>
+        <p>Choose a song from the list below to get recommendations.</p>
+        <form action="/search" method="POST">
+            <select name="song" required>
+                {% for song in music_list %}
+                <option value="{{ song }}">{{ song }}</option>
+                {% endfor %}
+            </select>
+            <br>
+            <button type="submit" class="search-button">Show Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>
