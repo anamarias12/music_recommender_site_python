@@ -23,3 +23,4 @@ TO DO:
 - searchbar improvement
 - filtering functionalities
 - rating functionalities
+- pls pls pls play song sample functionality or go to song url
