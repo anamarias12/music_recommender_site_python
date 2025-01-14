@@ -6,6 +6,36 @@
     <title>Search Songs</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Merriweather:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+    <style>
+        #song-list {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            overflow-y: auto;  /* Enable scrolling for long lists */
+            max-height: 200px; /* Enforce a maximum height */
+            box-sizing: border-box;
+        }
+    </style>
+    <script>
+        function filterSongs() {
+            const searchQuery = document.getElementById("search-box").value.toLowerCase();
+            const dropdown = document.getElementById("song-list");
+            const options = dropdown.options;
+
+            let visibleCount = 0; // Count visible options
+
+            for (let i = 0; i < options.length; i++) {
+                const song = options[i].text.toLowerCase();
+                if (song.includes(searchQuery)) {
+                    options[i].style.display = "block";
+                    visibleCount++;
+                } else {
+                    options[i].style.display = "none";
+                }
+            }
+            dropdown.size = visibleCount > 1 ? visibleCount : 2;
+        }
+    </script>
 </head>
 <body>
     <div class="sky-container">
@@ -17,15 +47,25 @@
     </div>
     <div class="container">
         <h1>Find Your Favorite Song!</h1>
-        <p>Choose a song from the list below to get recommendations.</p>
+        <p>Type a song name or choose from the list below to get recommendations.</p>
         <form action="/search" method="POST">
-            <select name="song" required>
+            <!-- Textbox for filtering dropdown -->
+            <input 
+                type="text" 
+                id="search-box" 
+                placeholder="Type your favorite song here..." 
+                class="textbox" 
+                style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 1em;" 
+                onkeyup="filterSongs()">
+            
+            <!-- Dropdown for actual submission -->
+            <select id="song-list" name="song" size="10" required>
                 {% for song in music_list %}
                 <option value="{{ song }}">{{ song }}</option>
                 {% endfor %}
             </select>
             <br>
-            <button type="submit" class="search-button">Show Recommendations</button>
+            <button type="submit" class="search-button" style="margin-top: 15px; padding: 10px 20px; font-size: 1em;">Show Recommendations</button>
         </form>
     </div>
 </body>

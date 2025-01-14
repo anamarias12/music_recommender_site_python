@@ -19,10 +19,12 @@
         <h1>Your Recommendations</h1>
         <p class="description">Here are some songs we think you’ll love based on your selection.</p>
         <div class="recommendations">
-            {% for song, poster in songs %}
+            {% for song, poster, link in songs %}
             <div class="recommendation">
-                <img src="{{ poster }}" alt="{{ song }}">
-                <p>{{ song }}</p>
+                <a href="{{ link }}" target="_blank">
+                    <img src="{{ poster }}" alt="{{ song }}">
+                </a>
+                    <p>{{ song }}</p>
             </div>
             {% endfor %}
         </div>
