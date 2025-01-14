@@ -50,14 +50,14 @@
         <p>Type a song name or choose from the list below to get recommendations.</p>
         <form action="/search" method="POST">
             <!-- Textbox for filtering dropdown -->
-            <input 
-                type="text" 
-                id="search-box" 
-                placeholder="Type your favorite song here..." 
-                class="textbox" 
-                style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 1em;" 
+            <input
+                type="text"
+                id="search-box"
+                placeholder="Type your favorite song here..."
+                class="textbox"
+                style="width: 100%; padding: 10px; margin-bottom: 15px; font-size: 1em;"
                 onkeyup="filterSongs()">
-            
+
             <!-- Dropdown for actual submission -->
             <select id="song-list" name="song" size="10" required>
                 {% for song in music_list %}
